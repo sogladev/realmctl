@@ -112,14 +112,7 @@ pub fn launch(config: &Config) -> std::io::Result<()> {
         clear_cache(&config.directory)?;
     }
 
-    // Verify executable exists
     let executable_path = config.directory.join(config.executable.clone());
-    if !executable_path.exists() {
-        return Err(std::io::Error::new(
-            std::io::ErrorKind::NotFound,
-            format!("Executable not found: {}", executable_path.display()),
-        ));
-    }
 
     // Collect all accounts
     let mut all_accounts: Vec<(String, String)> = vec![];
